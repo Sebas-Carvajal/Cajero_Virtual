@@ -10,7 +10,7 @@ import CardFunction from "./Pages/CardFunction";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Cajero_Virtual">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
