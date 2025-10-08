@@ -1,0 +1,10 @@
+.ahorros-message {
+  margin-top: 20px;
+  color: #333;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  width: 80%;
+  text-align: center;
+}

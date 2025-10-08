@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #5c5c5c; /* gris oscuro del fondo */
+}
+
+/* Contenedor principal */
+.ahorros-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Cuadro principal */
+.ahorros-card {
+  background-color: #d4d5de;   /* gris-lila claro */
+  border: 3px solid #2e2e2e;   /* borde oscuro */
+  border-radius: 10px;
+  width: 80vw;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 60px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Título centrado arriba */
+.ahorros-title {
+  text-align: center;
+  font-size: 1.6rem; /* más grande */
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+}
+
+/* Contenedor de los botones alineado a la izquierda */
+.ahorros-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px; /* más separación entre botones */
+  margin-left: 100px; /* más a la izquierda */
+  margin-top: 30px;
+}
+
+/* Botones del menú */
+.ahorros-button {
+  width: 220px; /* más anchos */
+  padding: 14px 0; /* más altos */
+  border: 1.8px solid #222;
+  border-radius: 8px;
+  background-color: #d4d5de;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.05rem; /* texto más grande */
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ahorros-button:hover {
+  background-color: #bcbcc6;
+  transform: scale(1.03);
+}
+
+/* Zona inferior */
+.ahorros-footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  padding-bottom: 25px;
+}
+
+/* Botón "Regresar" */
+.ahorros-return {
+  border: none;
+  background-color: #e1e1e1;
+  padding: 10px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.ahorros-return:hover {
+  background-color: #cfcfcf;
+}

@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background-color: #d9dadb;
+  color: #222;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.home-header {
+  background-color: #a0a0a0;
+  padding: 20px 40px;
+  color: #000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.home-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.home-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-card {
+  background-color: #b3b3b3;
+  width: 380px;
+  text-align: center;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-welcome {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.home-text {
+  font-size: 1rem;
+  color: #222;
+  margin-bottom: 30px;
+}
+
+.home-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.home-button:hover {
+  background-color: #555;
+}
+
+.home-footer {
+  background-color: #a0a0a0;
+  color: #000;
+  text-align: center;
+  padding: 12px 0;
+  font-weight: 500;
+}

@@ -1,0 +1,169 @@
+/* ======= ESTILOS GENERALES ======= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  background-color: #d9dadb;
+  color: #222;
+}
+
+.title{
+  color: black;
+}
+
+.cajero-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ======= HEADER ======= */
+.cajero-header {
+  background-color: #a0a0a0;
+  padding: 20px 40px;
+  color: #000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.cajero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ======= MAIN ======= */
+.cajero-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* 👈 para que el texto quede debajo */
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 100px;
+  padding-top: 40px;
+}
+
+/* ======= TARJETA PRINCIPAL ======= */
+.cajero-card {
+  background-color: #b3b3b3;
+  width: 360px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px 35px;
+}
+
+.cajero-subtitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #000;
+  background-color: #888;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+/* ======= PESTAÑAS (AHORROS / CRÉDITO) ======= */
+.cajero-tabs {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.cajero-tab {
+  flex: 1;
+  padding: 10px 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  font-weight: 500;
+  color: #000;
+  transition: 0.2s;
+}
+
+.cajero-tab-active {
+  background-color: #9b9b9b;
+  color: #000;
+  font-weight: 600;
+  box-shadow: inset 0 -3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cajero-tab:hover {
+  background-color: #bfbfbf;
+}
+
+/* ======= FORMULARIO ======= */
+.cajero-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.cajero-input-group {
+  margin-bottom: 15px;
+}
+
+.cajero-label {
+  display: block;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.cajero-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+/* ======= BOTÓN ======= */
+.cajero-button-wrapper {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.cajero-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.cajero-button:hover {
+  background-color: #555;
+}
+
+/* ======= ENLACE DEBAJO DEL FORMULARIO ======= */
+.cajero-link-wrapper {
+  margin-top: 20px;
+  padding-left: 35px; /* 👈 alinea con el cuadro */
+}
+
+.cajero-link-wrapper p {
+  font-size: 0.95rem;
+  color: #111;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.cajero-link-wrapper p:hover {
+  text-decoration: underline;
+}
+
+/* ======= FOOTER ======= */
+.cajero-footer {
+  background-color: #a0a0a0;
+  color: #000;
+  text-align: left;
+  padding: 12px 40px;
+  font-weight: 500;
+}
