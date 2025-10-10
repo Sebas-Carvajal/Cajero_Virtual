@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Cajero_Virtual/static/css/main.b34a2351.css",
-    "main.js": "/Cajero_Virtual/static/js/main.2eb9a3d9.js",
+    "main.js": "/Cajero_Virtual/static/js/main.d9b4c216.js",
     "static/js/453.b7789b64.chunk.js": "/Cajero_Virtual/static/js/453.b7789b64.chunk.js",
     "index.html": "/Cajero_Virtual/index.html",
     "main.b34a2351.css.map": "/Cajero_Virtual/static/css/main.b34a2351.css.map",
-    "main.2eb9a3d9.js.map": "/Cajero_Virtual/static/js/main.2eb9a3d9.js.map",
+    "main.d9b4c216.js.map": "/Cajero_Virtual/static/js/main.d9b4c216.js.map",
     "453.b7789b64.chunk.js.map": "/Cajero_Virtual/static/js/453.b7789b64.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b34a2351.css",
-    "static/js/main.2eb9a3d9.js"
+    "static/js/main.d9b4c216.js"
   ]
 }
