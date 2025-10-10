@@ -90,3 +90,36 @@ body {
 .ahorros-return:hover {
   background-color: #cfcfcf;
 }
+
+/* Distribución entre los botones y el panel de usuario */
+.ahorros-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 40px;
+}
+
+/* Panel de usuario */
+.ahorros-user {
+  background-color: #efeff5;
+  border: 2px solid #2e2e2e;
+  border-radius: 10px;
+  padding: 20px 30px;
+  width: 280px;
+  height: fit-content;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.ahorros-user h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #111;
+  text-align: center;
+}
+
+.ahorros-user p {
+  margin: 6px 0;
+  font-size: 1rem;
+  color: #222;
+}

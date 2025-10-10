@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./ConfirmationAccount.css";
 
-function ConformationAccount() {
+function ConfirmationAccount() {
   return (
     <div className="confirmation-container">
       <div className="confirmation-card">
@@ -10,7 +10,7 @@ function ConformationAccount() {
         </h2>
         <p className="confirmation-subtext">N° asignado #</p>
 
-        <Link to="/" className="confirmation-link">
+        <Link to="/Login" className="confirmation-link">
           Ir al inicio
         </Link>
       </div>
@@ -18,4 +18,4 @@ function ConformationAccount() {
   );
 }
 
-export default ConformationAccount;
+export default ConfirmationAccount;

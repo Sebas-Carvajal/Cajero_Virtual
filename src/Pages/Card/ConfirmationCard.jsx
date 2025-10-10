@@ -11,7 +11,7 @@ function ConfirmarionCard() {
         <p className="confirmation-subtext">N° #</p>
         <p className="confirmation-subtext">CVV #</p>
 
-        <Link to="/" className="confirmation-link">
+        <Link to="/Login" className="confirmation-link">
           Ir al inicio
         </Link>
       </div>
