@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function CupoCard() {
-  const [cupoDisponible] = useState(2500000); // valor fijo (ejemplo)
+  const [cupoDisponible] = useState(2500000);
  
 
   return (

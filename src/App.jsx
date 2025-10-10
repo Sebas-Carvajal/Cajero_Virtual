@@ -27,13 +27,10 @@ function App() {
         <Route path="/AccountFunction/Balance" element={<Balance />} />
         <Route path="/AccountFunction/Deposit" element={<Deposit />} />
         <Route path="/ConfirmationAccount" element={<ConfirmationAccount />} />
-
-
         <Route path="/ConfirmationCard" element={<ConfirmationCard />} />
         <Route path="/CardFunction" element={<CardFunction />} />
         <Route path="/CardFunction/Withdraw" element={<Withdraw />} />
         <Route path="/CardFunction/Transfer" element={<Transfer />} />
-
         <Route path="/CardFunction/PayCard" element={<PayCard />} />
         <Route path="/CardFunction/CupoCard" element={<CupoCard />} />
         <Route path="/ConfirmationAccount" element={<ConfirmationAccount />} />
