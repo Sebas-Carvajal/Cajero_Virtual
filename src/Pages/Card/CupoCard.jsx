@@ -17,7 +17,7 @@ function CupoCard() {
         </div>
 
         <div className="function-footer">
-         <Link to="/AccountFunction">
+         <Link to="/CardFunction">
             <button className="function-return">Regresar</button>
           </Link>
         </div>
