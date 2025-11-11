@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import "./CardFunction.css";
 
 const CardFunction = () => {
+  
+  const userData = JSON.parse(localStorage.getItem("user") || "{}");
+  const cardData = JSON.parse(localStorage.getItem("card") || "{}");
 
-
-  // Datos simulados del usuario (puedes conectarlos más adelante)
+  
   const usuario = {
-    nombre: "Sebastian Carvajal",
-    numeroTarjeta: "987654321",
+    nombre: userData.nombres || "Usuario",
+    numeroTarjeta: cardData.numeroTarjeta || "**** **** **** ****",
   };
 
   return (
@@ -18,11 +20,23 @@ const CardFunction = () => {
         <div className="ahorros-content">
           {/* Botones de la izquierda */}
           <div className="ahorros-buttons">
-            <Link to="/CardFunction/Withdraw" state={{from:"card"}}><button className="ahorros-button">RETIRAR</button></Link>
-            <Link to="/CardFunction/Transfer" state={{from:"card"}}><button className="ahorros-button">TRANSFERIR</button></Link>
-            <Link to="/CardFunction/PayCard"> <button className="ahorros-button">PAGAR TARJETA</button></Link>
-            <Link to="/CardFunction/CupoCard"> <button className="ahorros-button">CUPO DISPONIBLE</button></Link>
-            <Link to="/Login"> <button className="ahorros-button">CERRAR SESIÓN</button></Link> 
+            <Link to="/CardFunction/Withdraw" state={{from:"card"}}>
+              <button className="ahorros-button">RETIRAR</button>
+            </Link>
+            <Link to="/CardFunction/Transfer" state={{from:"card"}}>
+              <button className="ahorros-button">TRANSFERIR</button>
+            </Link>
+            <Link to="/CardFunction/PayCard">
+              <button className="ahorros-button">PAGAR TARJETA</button>
+            </Link>
+            <Link to="/CardFunction/CupoCard">
+              <button className="ahorros-button">CUPO DISPONIBLE</button>
+            </Link>
+            <Link to="/Login">
+              <button className="ahorros-button" onClick={() => localStorage.clear()}>
+                CERRAR SESIÓN
+              </button>
+            </Link> 
           </div>
 
           {/* Datos del usuario */}
@@ -35,7 +49,7 @@ const CardFunction = () => {
 
         {/* Botón de regreso */}
         <div className="ahorros-footer">
-            <Link to="/Login">
+          <Link to="/Login">
             <button className="ahorros-return">Regresar</button>
           </Link>
         </div>

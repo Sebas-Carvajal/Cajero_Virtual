@@ -1,10 +1,10 @@
 import "./StyleFunction.css";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function CupoCard() {
-  const [cupoDisponible] = useState(2500000);
- 
+  // Obtener datos reales del localStorage si existen
+  const cardData = JSON.parse(localStorage.getItem("card") || "{}");
+  const cupoDisponible = cardData.cupoDisponible || 2500000;
 
   return (
     <div className="function-container">
@@ -17,7 +17,7 @@ function CupoCard() {
         </div>
 
         <div className="function-footer">
-         <Link to="/CardFunction">
+          <Link to="/CardFunction">
             <button className="function-return">Regresar</button>
           </Link>
         </div>

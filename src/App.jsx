@@ -14,6 +14,14 @@ import Deposit from "./Pages/Account/Deposit";
 import PayCard from "./Pages/Card/PayCard";
 import CupoCard from "./Pages/Card/CupoCard";
 
+/*Proyecto:CAJERO VIRTUAL 
+Integrantes:
+Sebastian Andres Carvajal Lopez
+Maryory Patricia Orozco
+Cesar Lizarazo
+Daniel Campiño
+*/
+
 function App() {
   return (
     <BrowserRouter basename="/Cajero_Virtual">

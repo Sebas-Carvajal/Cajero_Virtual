@@ -9,22 +9,54 @@ function Transfer() {
   const isFrom = location.state?.from === "card";
   const navigate = useNavigate();
 
-   const handleReturn = () => {
+  const handleReturn = () => {
     if (isFrom) {
-      navigate("/CardFunction");/*se usa en javascript y navigate lo uso en el return con jsx */
+      navigate("/CardFunction");
     } else {
       navigate("/AccountFunction");
     }
   };
 
-  const handleTransfer = () => {
+  const handleTransfer = async () => {
     if (!amount || !accountNumber) {
       alert("Ingrese el número de cuenta y el monto a transferir.");
       return;
     }
-    alert(`Has transferido $${amount} a la cuenta ${accountNumber}.`);
-    setAmount("");
-    setAccountNumber("");
+
+    // Obtener datos del usuario
+    const userData = JSON.parse(localStorage.getItem("user") || "{}");
+    const accountData = JSON.parse(localStorage.getItem("account") || "{}");
+    const cardData = JSON.parse(localStorage.getItem("card") || "{}");
+
+    try {
+      const endpoint = isFrom 
+        ? "https://tu-backend-railway.up.railway.app/api/tarjetas/transferir"
+        : "https://tu-backend-railway.up.railway.app/api/cuentas/transferir";
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          numeroOrigen: isFrom ? cardData.numeroTarjeta : accountData.numeroCuenta,
+          numeroDestino: accountNumber,
+          monto: parseFloat(amount)
+        }),
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        alert(result.mensaje || `Has transferido $${amount} a la cuenta ${accountNumber}.`);
+        setAmount("");
+        setAccountNumber("");
+      } else {
+        const error = await response.json();
+        alert(error.mensaje || "Error al procesar la transferencia.");
+      }
+    } catch (error) {
+      alert("Error de conexión. Intente nuevamente.");
+    }
   };
 
   return (
@@ -51,7 +83,7 @@ function Transfer() {
         </button>
 
         <div className="function-footer">
-            <button className="function-return" onClick={handleReturn}>Regresar</button>
+          <button className="function-return" onClick={handleReturn}>Regresar</button>
         </div>
       </div>
     </div>

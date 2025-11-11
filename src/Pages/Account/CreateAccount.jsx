@@ -1,6 +1,6 @@
 import "./CreateAccount.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Cambia Link por useNavigate
 
 function CreateAccount() {
   const [formData, setFormData] = useState({
@@ -12,14 +12,45 @@ function CreateAccount() {
     pin: "",
   });
 
+  const navigate = useNavigate(); // Agrega esto
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Datos enviados:", formData);
+    
+    try {
+      const API_URL = "https://tu-backend-railway.up.railway.app/api/accounts";
+      
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Cuenta creada:", result);
+        
+        // Navegar a la página de confirmación con el número de cuenta
+        navigate("/ConfirmationAccount", { 
+          state: { 
+            numeroCuenta: result.numeroCuenta
+          } 
+        });
+      } else {
+        console.error("Error al crear la cuenta");
+        alert("Error al crear la cuenta. Intenta nuevamente.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error de conexión. Intenta nuevamente.");
+    }
   };
 
   return (
@@ -34,6 +65,7 @@ function CreateAccount() {
               name="nombres"
               value={formData.nombres}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -44,6 +76,7 @@ function CreateAccount() {
               name="apellidos"
               value={formData.apellidos}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -54,6 +87,7 @@ function CreateAccount() {
               name="direccion"
               value={formData.direccion}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -64,6 +98,7 @@ function CreateAccount() {
               name="telefono"
               value={formData.telefono}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -74,6 +109,7 @@ function CreateAccount() {
               name="correo"
               value={formData.correo}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -84,13 +120,18 @@ function CreateAccount() {
               name="pin"
               value={formData.pin}
               onChange={handleChange}
+              required
+              minLength="4"
+              maxLength="4"
+              placeholder="4 dígitos"
             />
           </div>
 
           <div className="create-button-container">
-            <Link to="/ConfirmationAccount" className="cajero-title-link"><button type="submit" className="request-button">
-              Enviar
-            </button></Link>
+            {/* REMUEVE el Link y deja solo el button */}
+            <button type="submit" className="request-button">
+              Crear Cuenta
+            </button>
           </div>
         </form>
       </div>

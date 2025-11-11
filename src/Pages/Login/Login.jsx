@@ -1,6 +1,7 @@
 import "./Login.css";
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function LoginCard() {
   const [activeTab, setActiveTab] = useState("ahorros");
@@ -8,25 +9,84 @@ function LoginCard() {
   const [pin, setPin] = useState("");
   const [numeroTarjeta, setNumeroTarjeta] = useState("");
   const [cvv, setCvv] = useState("");
-  const navigate = useNavigate();/*importante para instanciar navigate y navegar entre paginas desde una funcion javascript*/
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleIngresar = () => {
-    if (activeTab === "ahorros") {
-      console.log("Ingresando a cuenta de ahorros:", { numeroCuenta, pin });
-       navigate("/AccountFunction");
-    } else {
-      console.log("Ingresando a tarjeta de crédito:", { numeroTarjeta, cvv, pin });
-      navigate("/CardFunction");
+  const API_BASE_URL = "https://tu-backend-railway.up.railway.app";
+
+  const handleIngresar = async () => {
+    setLoading(true);
+    try {
+      if (activeTab === "ahorros") {
+        if (!numeroCuenta || !pin) {
+          alert("Por favor, ingrese número de cuenta y PIN.");
+          setLoading(false);
+          return;
+        }
+
+        // ✅ CAMBIO: Usa la URL de Railway
+        const response = await axios.post(`${API_BASE_URL}/api/login/cuenta`, {
+          numeroCuenta,
+          pin,
+        });
+
+        // CAMBIO IMPORTANTE: Verificar si la respuesta es exitosa (200-299)
+        if (response.status >= 200 && response.status < 300) {
+          alert("Inicio de sesión exitoso en cuenta de ahorros");
+          navigate("/AccountFunction");
+        } else {
+          // Mostrar el mensaje de error que viene del backend
+          alert(response.data || "Credenciales incorrectas.");
+        }
+
+      } else {
+        if (!numeroTarjeta || !cvv || !pin) {
+          alert("Por favor, ingrese número de tarjeta, CVV y PIN.");
+          setLoading(false);
+          return;
+        }
+
+        const response = await axios.post("http://localhost:8080/api/login/tarjeta", {
+          numeroTarjeta,
+          cvv,
+          pin,
+        });
+
+        // CAMBIO IMPORTANTE: Verificar si la respuesta es exitosa (200-299)
+        if (response.status >= 200 && response.status < 300) {
+          alert("Inicio de sesión exitoso en tarjeta de crédito");
+          navigate("/CardFunction");
+        } else {
+          // Mostrar el mensaje de error que viene del backend
+          alert(response.data || "Credenciales incorrectas.");
+        }
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      
+      // CAMBIO IMPORTANTE: Mostrar el mensaje específico del error
+      if (error.response) {
+        // El servidor respondió con un error (401, 404, 500, etc.)
+        alert(`Error: ${error.response.data}`);
+      } else if (error.request) {
+        // No se pudo conectar al servidor
+        alert("Error de conexión: No se pudo contactar al servidor.");
+      } else {
+        // Error en la configuración
+        alert("Error: " + error.message);
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
+  
   return (
     <div className="cajero-container">
       <header className="cajero-header">
         <Link to="/" className="title">
           <h1 className="cajero-title">Cajero Virtual</h1>
         </Link>
-
       </header>
 
       <main className="cajero-main">
@@ -114,8 +174,12 @@ function LoginCard() {
             )}
 
             <div className="cajero-button-wrapper">
-              <button onClick={handleIngresar} className="cajero-button">
-                Ingresar
+              <button
+                onClick={handleIngresar}
+                className="cajero-button"
+                disabled={loading}
+              >
+                {loading ? "Ingresando..." : "Ingresar"}
               </button>
             </div>
           </div>
@@ -123,18 +187,15 @@ function LoginCard() {
 
         <div className="cajero-link-wrapper">
           {activeTab === "ahorros" ? (
-            
             <Link to="/CreateAccount" className="cajero-title-link"><p>Crear Cuenta de Ahorros</p></Link>
-
           ) : (
             <Link to="/CreateCard" className="cajero-title-link"><p>Solicitar Tarjeta de Crédito</p></Link>
-            
           )}
         </div>
       </main>
 
       <footer className="cajero-footer">
-        <p className="cajero-footer-text">           </p>
+        <p className="cajero-footer-text"></p>
       </footer>
     </div>
   );
