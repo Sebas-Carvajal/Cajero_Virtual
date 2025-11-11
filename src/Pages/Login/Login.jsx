@@ -1,4 +1,5 @@
 import "./Login.css";
+import { API_BASE_URL } from '../config';
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -24,7 +25,7 @@ function LoginCard() {
           return;
         }
 
-        // ✅ CAMBIO: Usa la URL de Railway
+        
         const response = await axios.post(`${API_BASE_URL}/api/login/cuenta`, {
           numeroCuenta,
           pin,

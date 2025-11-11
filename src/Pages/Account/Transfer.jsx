@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./StyleFunction.css";
+import { API_BASE_URL } from '../config';
 import {useNavigate, useLocation } from "react-router-dom";
 
 function Transfer() {
@@ -30,8 +31,8 @@ function Transfer() {
 
     try {
       const endpoint = isFrom 
-        ? "https://tu-backend-railway.up.railway.app/api/tarjetas/transferir"
-        : "https://tu-backend-railway.up.railway.app/api/cuentas/transferir";
+      ? `${API_BASE_URL}/api/tarjetas/transferir`
+      : `${API_BASE_URL}/api/cuentas/transferir`;
 
       const response = await fetch(endpoint, {
         method: "POST",

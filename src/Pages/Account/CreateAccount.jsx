@@ -1,5 +1,6 @@
 import "./CreateAccount.css";
 import { useState } from "react";
+import { API_BASE_URL } from '../config';
 import { useNavigate } from "react-router-dom"; // Cambia Link por useNavigate
 
 function CreateAccount() {
@@ -23,9 +24,7 @@ function CreateAccount() {
     e.preventDefault();
     
     try {
-      const API_URL = "https://tu-backend-railway.up.railway.app/api/accounts";
-      
-      const response = await fetch(API_URL, {
+      const response = await fetch(`${API_BASE_URL}/api/accounts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,6 @@
 import "./CreateCard.css";
 import { useState } from "react";
+import { API_BASE_URL } from '../config';
 import { useNavigate } from "react-router-dom";
 
 function RequestCard() {
@@ -23,7 +24,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   
   try {
-    const response = await fetch("http://localhost:8080/api/tarjetas", { // ← Verifica esta URL
+    const response = await fetch(`${API_BASE_URL}/api/tarjetas`, { // ← Verifica esta URL
       method: "POST",
       headers: {
         "Content-Type": "application/json",

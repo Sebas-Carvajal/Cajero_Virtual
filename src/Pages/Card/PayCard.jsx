@@ -1,5 +1,6 @@
 import "./StyleFunction.css";
 import { useState } from "react";
+import { API_BASE_URL } from '../config';
 import { Link } from "react-router-dom";
 
 function PayCard() {
@@ -15,7 +16,7 @@ function PayCard() {
     const cardData = JSON.parse(localStorage.getItem("card") || "{}");
     
     try {
-      const response = await fetch("https://tu-backend-railway.up.railway.app/api/tarjetas/pagar", {
+      const response = await fetch(`${API_BASE_URL}/api/card/pay`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

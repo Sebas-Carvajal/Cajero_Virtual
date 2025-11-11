@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./AccountFunction.css";
+import { API_BASE_URL } from '../config';
 import { Link } from "react-router-dom";
 
 function Deposit() {
@@ -16,7 +17,7 @@ function Deposit() {
     const accountData = JSON.parse(localStorage.getItem("account") || "{}");
 
     try {
-      const response = await fetch("https://tu-backend-railway.up.railway.app/api/cuentas/depositar", {
+      const response = await fetch(`${API_BASE_URL}/api/cuentas/depositar`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

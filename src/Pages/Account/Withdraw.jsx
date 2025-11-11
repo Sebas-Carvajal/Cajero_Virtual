@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./StyleFunction.css";
+import { API_BASE_URL } from '../config';
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Withdraw() {
@@ -28,11 +29,9 @@ function Withdraw() {
     const cardData = JSON.parse(localStorage.getItem("card") || "{}");
 
     try {
-      const endpoint = isFrom 
-        ? "https://tu-backend-railway.up.railway.app/api/tarjetas/retirar"
-        : "https://tu-backend-railway.up.railway.app/api/cuentas/retirar";
+      
 
-      const response = await fetch(endpoint, {
+      const response = await fetch(`${API_BASE_URL}/api/cuentas/retirar`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
